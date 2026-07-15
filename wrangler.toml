@@ -1,0 +1,13 @@
+# Tells `npx wrangler deploy` this is a static-asset site (no server code).
+# `directory = "."` = the repo root, where index.html and the assets live.
+# SPA handling serves index.html for any non-file path so the client router
+# (and the old Wix slugs) keep working — same job the .htaccess rewrite did.
+#
+# NOTE: `name` must match your Cloudflare project/Worker name exactly.
+# If you named the project something other than "grantgilman-site", edit it here.
+name = "grantgilman-site"
+compatibility_date = "2026-07-15"
+
+[assets]
+directory = "."
+not_found_handling = "single-page-application"
