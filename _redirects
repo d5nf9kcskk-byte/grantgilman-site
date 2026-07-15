@@ -1,6 +1,0 @@
-# Cloudflare Pages redirects — replaces the Apache .htaccess rewrite rules.
-# Real files (assets, images, css, js, favicons) are served directly by Pages
-# BEFORE these rules run, so this catch-all only fires for app/router paths.
-# Every other path serves index.html with a 200 so the client-side router
-# (which reads the URL, incl. the old Wix slugs) can handle it.
-/*    /index.html   200
