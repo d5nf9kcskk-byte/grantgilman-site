@@ -1,0 +1,24 @@
+# Comment cleanup worker. Deploy from this folder: npx wrangler deploy
+# Secret (set once): npx wrangler secret put SETUP_KEY
+name = "social-moderator"
+main = "src/index.js"
+compatibility_date = "2026-07-15"
+workers_dev = false
+routes = [{ pattern = "moderator.grantgilman.com", custom_domain = true }]
+
+[vars]
+ORIGIN = "https://moderator.grantgilman.com"
+
+[ai]
+binding = "AI"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "83560d34598648a29cddd669b45a2d13"
+
+# Must match CRONS in src/index.js. YouTube, then Facebook/Instagram, then X, every 3 hours.
+[triggers]
+crons = ["5 */3 * * *", "25 */3 * * *", "45 */3 * * *"]
+
+[observability]
+enabled = true
